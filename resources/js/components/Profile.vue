@@ -9,7 +9,7 @@
                      </div>
                         
                     <div class="card-body">
-                        I'm an example Component
+                        I'm an Profile Component
                     </div>
 
                 </div>
