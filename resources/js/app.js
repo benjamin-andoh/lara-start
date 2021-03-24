@@ -28,8 +28,10 @@ let routes = [
     {path:"/profile", component: require("./components/Profile.vue").default}
 ]
 
-const router = new VueRouter(
-    {routes}
+const router = new VueRouter(  {
+    mode: 'history',
+    routes
+}
 )
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
