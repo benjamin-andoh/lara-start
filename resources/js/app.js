@@ -9,6 +9,11 @@ require('./bootstrap');
 window.Vue = require('vue').default;
 
 import Vue from 'vue';
+import VueRouter from 'vue-router'
+import { Form, HasError, AlertError } from 'vform'
+
+
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -20,8 +25,13 @@ import Vue from 'vue';
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-import VueRouter from 'vue-router'
+
 Vue.use(VueRouter)
+
+window.Form = Form;
+Vue.component(HasError.name, HasError)
+Vue.component(AlertError.name, AlertError)
+
 
 let routes = [
     {path:"/dashboard", component: require("./components/Dashboard.vue").default },
