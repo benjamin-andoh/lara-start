@@ -11,6 +11,7 @@ window.Vue = require('vue').default;
 import Vue from 'vue';
 import VueRouter from 'vue-router'
 import { Form, HasError, AlertError } from 'vform'
+import { functions } from 'lodash';
 
 
 
@@ -44,6 +45,10 @@ const router = new VueRouter(  {
     routes
 }
 )
+
+// Vue.filter('uptext', function(text){
+//     return text.charAt(0).toUpperCase() + text.slice();
+// });
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
