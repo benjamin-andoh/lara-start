@@ -46,9 +46,9 @@ const router = new VueRouter(  {
 }
 )
 
-// Vue.filter('uptext', function(text){
-//     return text.charAt(0).toUpperCase() + text.slice();
-// });
+Vue.filter('uptext', function(text){
+    return text.toUpperCase();
+});
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 

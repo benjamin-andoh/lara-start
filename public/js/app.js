@@ -2113,6 +2113,7 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    // this method loads the user from the data base
     loadUsers: function loadUsers() {
       var _this = this;
 
@@ -2121,12 +2122,18 @@ __webpack_require__.r(__webpack_exports__);
         return _this.users = data.data;
       });
     },
+    // the methods save the user 
     createUser: function createUser() {
       this.form.post('api/user');
     }
   },
   created: function created() {
+    var _this2 = this;
+
     this.loadUsers();
+    setInterval(function () {
+      return _this2.loadUsers();
+    }, 3000);
   }
 });
 
@@ -2185,10 +2192,10 @@ var routes = [{
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_3__.default({
   // mode: 'history',
   routes: routes
-}); // Vue.filter('uptext', function(text){
-//     return text.charAt(0).toUpperCase() + text.slice();
-// });
-
+});
+vue__WEBPACK_IMPORTED_MODULE_2__.default.filter('uptext', function (text) {
+  return text.toUpperCase();
+});
 vue__WEBPACK_IMPORTED_MODULE_2__.default.component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue").default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -39121,7 +39128,7 @@ var render = function() {
                   return _c("tr", { key: user.id }, [
                     _c("td", [_vm._v(_vm._s(user.id))]),
                     _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(user.name))]),
+                    _c("td", [_vm._v(_vm._s(_vm._f("uptext")(user.name)))]),
                     _vm._v(" "),
                     _c("td", [_vm._v(_vm._s(user.email))]),
                     _vm._v(" "),

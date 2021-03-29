@@ -32,7 +32,7 @@
                   <tbody>
                     <tr v-for="user in users" :key='user.id'>
                       <td>{{ user.id }}</td>
-                      <td>{{ user.name }}</td>
+                      <td>{{ user.name | uptext }}</td>
                       <td>{{ user.email }}</td>
                       <td>{{ user.type }}</td>
                       <td>{{ user.created_at }}</td>
@@ -139,16 +139,18 @@
         },
 
         methods:{
-
+          // this method loads the user from the data base
           loadUsers(){
             axios.get('api/user').then( ({data})=>(this.users = data.data) );
           },
+          // the methods save the user 
           createUser(){
              this.form.post('api/user');
           }
         },
         created(){
             this.loadUsers();
+            setInterval(() => this.loadUsers(),3000);
         }
     }
 </script>
